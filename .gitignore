@@ -174,3 +174,4 @@ lib/
 *.app/
 
 # End of https://www.toptal.com/developers/gitignore/api/delphi,lazarus,freepascal
+TMyChatGPTAPIKey2Unit.pas
