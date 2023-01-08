@@ -8,7 +8,7 @@ uses
   FMX.TMSFNCTypes, FMX.TMSFNCUtils, FMX.TMSFNCGraphics, FMX.TMSFNCGraphicsTypes,
   FMX.Edit, FMX.TMSFNCEdit, FMX.TMSFNCCustomControl, FMX.TMSFNCWebBrowser,
   FMX.TMSFNCCustomWEBControl, FMX.TMSFNCWXHTMLMemo, FMX.Controls.Presentation,
-  FMX.StdCtrls, FMX.TMSFNCButton, System.JSON, TMyChatGPTAPIKeyUnit,
+  FMX.StdCtrls, FMX.TMSFNCButton, System.JSON, TMyChatGPTAPIKey2Unit,
   FMX.TMSFNCCloudBase, System.Generics.Collections;
 
 type

@@ -277,7 +277,7 @@
             <Form>TMySimpleChatGPTForm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="TMyChatGPTAPIKeyUnit.pas"/>
+        <DCCReference Include="TMyChatGPTAPIKey2Unit.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -469,6 +469,18 @@
                 <DeployFile LocalName="Win32\Debug\TMySimpleChatGPT.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>TMySimpleChatGPT.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\TMySimpleChatGPT.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>TMySimpleChatGPT.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\TMySimpleChatGPT.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>TMySimpleChatGPT.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
