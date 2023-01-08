@@ -2,7 +2,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
   Left = 0
   Top = 0
   Caption = 'TMySimpleChatGPTClient'
-  ClientHeight = 398
+  ClientHeight = 542
   ClientWidth = 522
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -21,9 +21,9 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
   end
   object TMySimpleChatGPTMemo: TTMSFNCWXHTMLMemo
     Position.X = 8.000000000000000000
-    Position.Y = 38.000000000000000000
+    Position.Y = 81.000000000000000000
     Size.Width = 500.000000000000000000
-    Size.Height = 350.000000000000000000
+    Size.Height = 453.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
   end
@@ -37,5 +37,85 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Size.PlatformDefault = False
     Text = ''
     Lookup.Separator = ';'
+  end
+  object TMySimpleChatGPTComboBox: TTMSFNCComboBox
+    Position.X = 113.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 150.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Font.Name = 'Segoe UI'
+    DropDownWidth = 150.000000000000000000
+    ItemHeight = 16.000000000000000000
+    ItemAppearance.ShowFocus = False
+    ItemAppearance.ExpandColumn = -1
+    ItemAppearance.FixedHeight = 16.000000000000000000
+    ItemAppearance.VariableMinimumHeight = 25.000000000000000000
+    ItemAppearance.ShowLines = False
+    ItemAppearance.Font.Color = xFF7A7A7A
+    ItemAppearance.Font.Name = 'Segoe UI'
+    ItemAppearance.TitleFont.Name = 'Segoe UI'
+    ItemAppearance.SelectedFontColor = xFF454545
+    ItemAppearance.ExtendedFontColor = xFF454545
+    ItemAppearance.SelectedFill.Color = xFFF6F8FC
+    ItemAppearance.SelectedStroke.Color = xFF2D9BEF
+    ItemAppearance.SelectedStroke.Width = 2.000000000000000000
+    ItemAppearance.SelectionArea = tsaFull
+    ItemAppearance.ExtendedFont.Name = 'Segoe UI'
+    ItemAppearance.ExpandNodeIcon.PNG = {
+      89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+      26000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      004B49444154285363ACAEADFECF402C0029260680D43141F5A0006F3F6F280B
+      1560558C0B90A498054A63588DCCDFBA692B98862B860980004821321F0668E7
+      66AC8AB1390104488841060600EED939BB858B0ECD0000000049454E44AE4260
+      82}
+    ItemAppearance.CollapseNodeIcon.PNG = {
+      89504E470D0A1A0A0000000D494844520000000B0000000B0806000000A9AC77
+      26000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      003A49444154285363ACAEADFECF402C0029260680D43141F5100568A798054A
+      8381B79F379485005B376D85B2D014234B600383C48324C420030300D49232D7
+      2010A6750000000049454E44AE426082}
+    ItemAppearance.ExpandNodeIconLarge.PNG = {
+      89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+      3B000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      006849444154484B63ACAEADFECF4003C004A5A90EE02E6E696A010B500A6AEA
+      6AC034CD5C4CB4C1DE7EDE604C2C187817930A460D860316280D0784621E97FC
+      D64D5BA12C08A09F8BD16D8601984B71C9A383D1540107C3D860506A20364580
+      00CD5C3CD4EA3C060600D2401984154F98460000000049454E44AE426082}
+    ItemAppearance.CollapseNodeIconLarge.PNG = {
+      89504E470D0A1A0A0000000D4948445200000016000000160806000000C4B46C
+      3B000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      005149444154484B63ACAEADFECF4003C004A5A90EE02E6E696A010B500A6AEA
+      6AC034CD5C3C6A301C8C1A0C072C501A0378FB794359F8C1D64D5BA12C544033
+      178FE63C381835180E869EC143ADCE636000009C2E12F3AF5420C80000000049
+      454E44AE426082}
+    Appearance.Stroke.Color = claDarkgray
+    Appearance.Fill.Color = xFFE9E9E9
+    Appearance.StrokeHover.Color = claLightslategray
+    Appearance.FillHover.Color = xFFBBC4CC
+    Appearance.StrokeDown.Color = claSlategray
+    Appearance.FillDown.Color = xFFB8C0C8
+    Appearance.StrokeSelected.Color = claDarkslategray
+    Appearance.FillSelected.Color = xFFB8C0C8
+    Appearance.StrokeDisabled.Color = claDarkgray
+    Appearance.FillDisabled.Color = claSilver
+    Appearance.SeparatorStroke.Color = claDarkgray
+    Appearance.Font.Name = 'Segoe UI'
+  end
+  object TMySimpleChatGPTLabelEdit: TTMSFNCLabelEdit
+    Position.X = 8.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Font.Name = 'Segoe UI'
+    Fill.Kind = gfkNone
+    Stroke.Kind = gskNone
+    Stroke.Color = claNull
+    Text = 'Welches Modell:'
+    AcceptButtonStroke.Width = 2.000000000000000000
+    CancelButtonStroke.Width = 2.000000000000000000
   end
 end

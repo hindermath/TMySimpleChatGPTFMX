@@ -175,3 +175,8 @@ lib/
 
 # End of https://www.toptal.com/developers/gitignore/api/delphi,lazarus,freepascal
 TMyChatGPTAPIKey2Unit.pas
+TMySimpleChatGPTUnit.LgXhdpiPh.fmx
+TMySimpleChatGPTUnit.Surface.fmx
+TMySimpleChatGPTUnit.Windows.fmx
+TMySimpleChatGPTUnit.XLgXhdpiTb.fmx
+TMyChatGPTAPIKey2Unit.pas
