@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8AAC020D-6367-4BE0-9E7B-6FA16936D33C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TMySimpleChatGPT.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TMySimpleChatGPT">
+        <MSBuild Projects="TMySimpleChatGPT.dproj"/>
+    </Target>
+    <Target Name="TMySimpleChatGPT:Clean">
+        <MSBuild Projects="TMySimpleChatGPT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TMySimpleChatGPT:Make">
+        <MSBuild Projects="TMySimpleChatGPT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TMySimpleChatGPT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TMySimpleChatGPT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TMySimpleChatGPT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
