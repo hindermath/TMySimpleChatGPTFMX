@@ -87,7 +87,6 @@ begin
           TMyJsonString := TMyJsonArray.Items[0].GetValue<TJSONString>('text');
           Result := TMyJsonString.Value;
         end
-        else
       end
       else
         raise Exception.Create('HTTP response code: ' + TMyCB.RequestResult.ResponseCode.ToString);
