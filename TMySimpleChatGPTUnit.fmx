@@ -16,7 +16,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Position.X = 408.000000000000000000
     Position.Y = 8.000000000000000000
     TabOrder = 0
-    Text = 'Frage senden'
+    Text = 'Ask question'
     OnClick = TMySimpleChatGPTButtonClick
   end
   object TMySimpleChatGPTMemo: TTMSFNCWXHTMLMemo
@@ -39,8 +39,8 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Lookup.Separator = ';'
   end
   object TMySimpleChatGPTComboBox: TTMSFNCComboBox
-    Position.X = 113.000000000000000000
-    Position.Y = 48.000000000000000000
+    Position.X = 57.000000000000000000
+    Position.Y = 51.000000000000000000
     Size.Width = 150.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
@@ -106,7 +106,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
   object TMySimpleChatGPTLabelEdit: TTMSFNCLabelEdit
     Position.X = 8.000000000000000000
     Position.Y = 48.000000000000000000
-    Size.Width = 97.000000000000000000
+    Size.Width = 41.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
@@ -114,7 +114,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Fill.Kind = gfkNone
     Stroke.Kind = gskNone
     Stroke.Color = claNull
-    Text = 'Welches Modell:'
+    Text = 'Model'
     AcceptButtonStroke.Width = 2.000000000000000000
     CancelButtonStroke.Width = 2.000000000000000000
   end

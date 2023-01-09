@@ -33,10 +33,6 @@ var
 implementation
 
 {$R *.fmx}
-{$R *.LgXhdpiPh.fmx ANDROID}
-{$R *.XLgXhdpiTb.fmx ANDROID}
-{$R *.Surface.fmx MSWINDOWS}
-{$R *.Windows.fmx MSWINDOWS}
 
 procedure TTMySimpleChatGPTForm.TMySimpleChatGPTButtonClick(Sender: TObject);
 begin
@@ -67,7 +63,7 @@ begin
 
     try
       // Use JSON for the REST API calls ans set API Key via authorization header
-      TMyCb.Request.AddHeader('Authorization','Bearer ' + CHATGPT_APIKEY);
+      TMyCb.Request.AddHeader('Authorization','Bearer ' + GetOpenApiKey);
       TMyCb.Request.AddHeader('Content-Type','application/json');
 
       // Select HTTPS POST method, set POST data and specify end point URL

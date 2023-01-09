@@ -2,9 +2,13 @@ unit TMyChatGPTAPIKey2Unit;
 
 interface
 
-const
-  CHATGPT_APIKEY = 'Place your API KEY here';
+function GetOpenApiKey: string;
 
 implementation
-
+uses
+  System.SysUtils;
+function GetOpenApiKey: string;
+begin
+  GetOpenApiKey := GetEnvironmentVariable('OPENAI_API_KEY')
+end;
 end.
