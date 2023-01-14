@@ -1,0 +1,3 @@
+inherited TMySimpleChatGPTForm_Macintosh: TTMySimpleChatGPTForm_Macintosh
+  DesignerMasterStyle = 1
+end

@@ -7,6 +7,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = TMySimpleChatGPTFormCreate
   DesignerMasterStyle = 0
   object TMySimpleChatGPTButton: TTMSFNCButton
     Font.Name = 'Segoe UI'
@@ -39,7 +40,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Lookup.Separator = ';'
   end
   object TMySimpleChatGPTComboBox: TTMSFNCComboBox
-    Position.X = 57.000000000000000000
+    Position.X = 97.000000000000000000
     Position.Y = 51.000000000000000000
     Size.Width = 150.000000000000000000
     Size.Height = 22.000000000000000000
@@ -106,7 +107,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
   object TMySimpleChatGPTLabelEdit: TTMSFNCLabelEdit
     Position.X = 8.000000000000000000
     Position.Y = 48.000000000000000000
-    Size.Width = 41.000000000000000000
+    Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
@@ -114,7 +115,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Fill.Kind = gfkNone
     Stroke.Kind = gskNone
     Stroke.Color = claNull
-    Text = 'Model'
+    Text = 'Chose model'
     AcceptButtonStroke.Width = 2.000000000000000000
     CancelButtonStroke.Width = 2.000000000000000000
   end
