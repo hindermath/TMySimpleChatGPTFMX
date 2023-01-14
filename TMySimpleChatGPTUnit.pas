@@ -89,7 +89,6 @@ begin
       TMyCBHint := TMyCBHint + ' Owned by:' + TMyJsonValue.GetValue<TJSONValue>('owned_by').ToString;
       TMyCBHint := TMyCBHint + ' permission:' + TMyJsonValue.GetValue<TJSONValue>('permission').ToString;
       TMySimpleChatGPTComboBox.Hint := TMyCBHint;
-      TMySimpleChatGPTComboBox.ShowHint := True;
     end
     else
       raise Exception.Create('ItemSelected HTTP response code:' + TMyCB.RequestResult.ResponseCode.ToString);
@@ -126,10 +125,7 @@ begin
         begin
           TMyJsonArray := TMyJsonValue as TJSONArray;
           for TMyJsonItem in TMyJsonArray do
-          begin
             TMySimpleChatGPTComboBox.Items.Add(TMyJsonItem.GetValue<TJSONString>('id').ToString);
-
-          end;
           TMySimpleChatGPTComboBox.Items.Sort;
         end;
       end
@@ -141,6 +137,10 @@ begin
 end;
 
 function TTMySimpleChatGPTForm.TMyAskChatGPT(AQuestion: string; AModel: string): string;
+var
+  TMyJsonItem: TJSONValue;
+  TMyJsonStringValues: string;
+
 begin
   Result := '';
 
@@ -178,7 +178,13 @@ begin
         if TMyJsonValue is TJSONArray then
         begin
           TMyJsonArray := TMyJsonValue as TJSONArray;
-          TMyJsonString := TMyJsonArray.Items[0].GetValue<TJSONString>('text');
+          //TMyJsonString := TMyJsonArray.Items[0].GetValue<TJSONString>('text');
+          for TMyJsonItem in TMyJsonArray do
+          begin
+            TMyJsonString := TMyJsonItem.GetValue<TJSONString>('text');
+            TMyJsonStringValues := TMyJsonStringValues + #13#10 +TMyJsonString.Value
+          end;
+
           Result := TMyJsonString.Value;
         end
       end
