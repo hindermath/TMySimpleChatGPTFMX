@@ -40,6 +40,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Lookup.Separator = ';'
   end
   object TMySimpleChatGPTComboBox: TTMSFNCComboBox
+    ShowHint = True
     Position.X = 97.000000000000000000
     Position.Y = 51.000000000000000000
     Size.Width = 150.000000000000000000
@@ -49,6 +50,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Font.Name = 'Segoe UI'
     DropDownWidth = 150.000000000000000000
     ItemHeight = 16.000000000000000000
+    Style = csDropDownList
     ItemAppearance.ShowFocus = False
     ItemAppearance.ExpandColumn = -1
     ItemAppearance.FixedHeight = 16.000000000000000000
@@ -103,6 +105,7 @@ object TMySimpleChatGPTForm: TTMySimpleChatGPTForm
     Appearance.FillDisabled.Color = claSilver
     Appearance.SeparatorStroke.Color = claDarkgray
     Appearance.Font.Name = 'Segoe UI'
+    OnItemSelected = TMySimpleChatGPTComboBoxItemSelected
   end
   object TMySimpleChatGPTLabelEdit: TTMSFNCLabelEdit
     Position.X = 8.000000000000000000

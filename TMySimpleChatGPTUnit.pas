@@ -24,16 +24,30 @@ type
     TMySimpleChatGPTComboBox: TTMSFNCComboBox;
     TMySimpleChatGPTLabelEdit: TTMSFNCLabelEdit;
     procedure TMySimpleChatGPTButtonClick(Sender: TObject);
-    function TMyAskChatGPT(AQuestion: string): string;
+    function TMyAskChatGPT(AQuestion: string; AModel: String): string;
     procedure TMySimpleChatGPTFormCreate(Sender: TObject);
+    procedure TMySimpleChatGPTComboBoxItemSelected(Sender: TObject;
+      AText: string; AItemIndex: Integer);
+
   private
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
+    TMySimpleChatGPTModel: string;
   end;
 
 var
   TMySimpleChatGPTForm: TTMySimpleChatGPTForm;
+
+  TMyCB :TTMSFNCCloudBase;
+  TMyJsonValue: TJSONValue;
+  TMyJsonArray: TJSONArray;
+  TMyJsonString: TJSONString;
+
+  TMyPostData: string;
+
+
+
 
 implementation
 
@@ -43,17 +57,54 @@ implementation
 
 procedure TTMySimpleChatGPTForm.TMySimpleChatGPTButtonClick(Sender: TObject);
 begin
-  TMySimpleChatGPTMemo.HTML.Text := TMyAskChatGPT(TMySimpleChatGPTEdit.Text);
+  TMySimpleChatGPTMemo.HTML.Text := TMyAskChatGPT(TMySimpleChatGPTEdit.Text, TMySimpleChatGPTComboBox.Text);
+end;
+
+procedure TTMySimpleChatGPTForm.TMySimpleChatGPTComboBoxItemSelected(
+  Sender: TObject; AText: string; AItemIndex: Integer);
+var
+    TMyCBHint: string;
+
+begin
+  if (TMySimpleChatGPTEdit.Text <> '') and (TMySimpleChatGPTComboBox.Text <> '') then
+    TMySimpleChatGPTButton.Enabled := True;
+  TMySimpleChatGPTModel := AText;
+  // Delete quotin marks for request path
+  Delete(AText,1,1);
+  Delete(AText, AText.Length,1);
+  TMyCB := TTMSFNCCloudBase.Create;
+  try
+    TMyCB.Request.AddHeader('Authorization','Bearer ' + GetOpenApiKey);
+    TMyCB.Request.Method := rmGET;
+    TMyCB.Request.Host := OPENAIHOST;
+    TMyCB.Request.Path := OPENAIAPIVERV1 + 'models/' + AText;
+
+    TMyCB.ExecuteRequest(nil, nil, False);
+
+    if TMyCB.RequestResult.Success then
+    begin
+      TMyJsonValue := TJSONObject.ParseJSONValue(TMyCB.RequestResult.ResultString);
+
+      TMyCBHint := 'Object:' + TMyJsonValue.GetValue<TJSONValue>('object').ToString;
+      TMyCBHint := TMyCBHint + ' Owned by:' + TMyJsonValue.GetValue<TJSONValue>('owned_by').ToString;
+      TMyCBHint := TMyCBHint + ' permission:' + TMyJsonValue.GetValue<TJSONValue>('permission').ToString;
+      TMySimpleChatGPTComboBox.Hint := TMyCBHint;
+      TMySimpleChatGPTComboBox.ShowHint := True;
+    end
+    else
+      raise Exception.Create('ItemSelected HTTP response code:' + TMyCB.RequestResult.ResponseCode.ToString);
+  finally
+    TMyCB.Free;
+  end;
 end;
 
 procedure TTMySimpleChatGPTForm.TMySimpleChatGPTFormCreate(Sender: TObject);
 var
-  TMyCB :TTMSFNCCloudBase;
-  TMyJsonValue: TJSONValue;
-  TMyJsonArray: TJSONArray;
-  TMyJsonItem: TJSONValue;
+    TMyJsonItem: TJSONValue;
 
 begin
+    TMySimpleChatGPTButton.Enabled := False;
+    TMySimpleChatGPTEdit.Text := TMySimpleChatGPTEdit.Text.Empty;
     // Create an instance of TMS FNC Cloud Base class
     TMyCB := TTMSFNCCloudBase.Create;
     try
@@ -75,30 +126,26 @@ begin
         begin
           TMyJsonArray := TMyJsonValue as TJSONArray;
           for TMyJsonItem in TMyJsonArray do
+          begin
             TMySimpleChatGPTComboBox.Items.Add(TMyJsonItem.GetValue<TJSONString>('id').ToString);
+
+          end;
+          TMySimpleChatGPTComboBox.Items.Sort;
         end;
       end
       else
-        raise Exception.Create('HTTP reponse code: ' + TMyCB.RequestResult.ResponseCode.ToString);
+        raise Exception.Create('FormCreate HTTP reponse code: ' + TMyCB.RequestResult.ResponseCode.ToString);
     finally
       TMyCB.Free;
     end;
-
 end;
 
-function TTMySimpleChatGPTForm.TMyAskChatGPT(AQuestion: string): string;
-var
-  TMyCB: TTMSFNCCloudBase;
-  TMyPostData: string;
-  TMyJsonValue: TJSONValue;
-  TMyJsonArray: TJSONArray;
-  TMyJsonString: TJSONString;
-
+function TTMySimpleChatGPTForm.TMyAskChatGPT(AQuestion: string; AModel: string): string;
 begin
   Result := '';
 
   TMyPostData := '{' +
-    '"model": "text-davinci-003",'+
+    '"model": ' + TMySimpleChatGPTModel + ','+
     '"prompt": "' + AQuestion + '",'+
     '"max_tokens": 2048,'+
     '"temperature": 0,'+
@@ -136,7 +183,7 @@ begin
         end
       end
       else
-        raise Exception.Create('HTTP response code: ' + TMyCB.RequestResult.ResponseCode.ToString);
+        raise Exception.Create('AskCHatGPT HTTP response code: ' + TMyCB.RequestResult.ResponseCode.ToString);
     finally
       TMyCB.Free;
     end;
